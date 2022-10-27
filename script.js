@@ -1,4 +1,4 @@
-const NUMBER_OF_SQUARES = 16;
+const NUMBER_OF_SQUARES = 16 * 16;
 
 const gridContainer = document.querySelector("#grid-container");
 

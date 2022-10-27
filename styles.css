@@ -1,5 +1,10 @@
 .grid-square {
-    width:16px;
-    height:16px;
-    border: 1px black solid;
+    width: 16px;
+    aspect-ratio: 1;
+}
+
+#grid-container {
+    display: flex;
+    width: 256px;
+    flex-wrap: wrap;
 }
