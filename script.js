@@ -47,6 +47,13 @@ function makeGridInteractive(color) {
     })
 };
 
+// declare a function to clear the grid
+function clearGrid() {
+    while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    };
+};
+
 // when the page is initially loaded, make the grid interactive
 
 makeGridInteractive(currentColour);
@@ -61,14 +68,14 @@ let sliderLabel = document.getElementById("slider-label");
 sliderLabel.innerHTML = `Grid size: ${slider.value}`;
 
 // the user can drag the slider to set a new canvas size.
+// update the slider label while the user is sliding the slider around
+slider.oninput = function() {
+    sliderLabel.innerHTML = `Grid size: ${this.value}`;
+};
 // when the user is done changing the slider value:
 slider.onchange = function() {
-    // the slider label is updated
-    sliderLabel.innerHTML = `Grid size: ${this.value}`;
     // all existing grid squares are deleted
-    while (gridContainer.firstChild) {
-        gridContainer.removeChild(gridContainer.firstChild);
-    };
+    clearGrid();
     // the grid is rendered again using the new value
     renderGrid(this.value);
     // the grid is made interactive
