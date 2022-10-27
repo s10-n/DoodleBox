@@ -2,6 +2,9 @@
 
 let initialGridDimension = 50;
 
+// set the current colour
+let currentColour = 'black';
+
 // create a DOM object for the grid container
 
 const gridContainer = document.querySelector("#grid-container");
@@ -30,7 +33,7 @@ renderGrid(initialGridDimension);
 // this function creates a node list containing each grid square,
 // then adds an event listener to each square
 
-function makeGridInteractive() {
+function makeGridInteractive(color) {
     // create a node list containing each grid item
     let gridSquares = document.querySelectorAll(".grid-square")
 
@@ -38,7 +41,7 @@ function makeGridInteractive() {
     gridSquares.forEach((gridSquare) => {
         gridSquare.addEventListener('mouseover', (event) => {
             if (event.buttons === 1 || event.buttons === 3) {
-                gridSquare.style.backgroundColor = 'black';
+                gridSquare.style.backgroundColor = color;
             }
         })
     })
@@ -46,7 +49,7 @@ function makeGridInteractive() {
 
 // when the page is initially loaded, make the grid interactive
 
-makeGridInteractive();
+makeGridInteractive(currentColour);
 
 // Changing the canvas size
 
@@ -55,13 +58,13 @@ let slider = document.getElementById("grid-dimension-slider");
 let sliderLabel = document.getElementById("slider-label");
 
 // set a default value for the slider label
-sliderLabel.innerHTML = slider.value;
+sliderLabel.innerHTML = `Grid size: ${slider.value}`;
 
 // the user can drag the slider to set a new canvas size.
 // when the user is done changing the slider value:
 slider.onchange = function() {
     // the slider label is updated
-    sliderLabel.innerHTML = this.value;
+    sliderLabel.innerHTML = `Grid size: ${this.value}`;
     // all existing grid squares are deleted
     while (gridContainer.firstChild) {
         gridContainer.removeChild(gridContainer.firstChild);
@@ -69,5 +72,16 @@ slider.onchange = function() {
     // the grid is rendered again using the new value
     renderGrid(this.value);
     // the grid is made interactive
-    makeGridInteractive();
+    makeGridInteractive(currentColour);
+}
+
+// changing the colour of the pencil
+// create a DOM object for the colour picker
+let colourPicker = document.getElementById("colour-picker");
+
+// the user can pick a color using the color picker
+// when the user is done picking the color value:
+colourPicker.onchange = function() {
+    currentColour = this.value;
+    makeGridInteractive(currentColour);
 }

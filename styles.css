@@ -11,4 +11,28 @@
     flex-wrap: wrap;
     border: 1px black solid;
     box-shadow: 5px 5px 10px gray;
+    
+}
+
+#control-panel {
+    width: 600px;
+    border: 1px dotted black;
+    display: flex;
+    max-height: 600px;
+    flex-direction: column;
+}
+
+.slider {
+    width: 400px;
+}
+
+#ui-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+}
+
+body {
+    text-align: center;
 }

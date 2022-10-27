@@ -11,9 +11,15 @@
 <body>
     <h1>Etch-a-Sketch</h1>
     <div id="ui-container">
-        <div class="slider-container">
-            <p id="slider-label"></p>
-            <input type="range" min="16" max="100" value="50" class="slider" id="grid-dimension-slider">
+        <div id="control-panel">
+            <div class="grid-slider-container">
+                <p id="slider-label">Grid size: </p>
+                <input type="range" min="16" max="100" value="50" class="slider" id="grid-dimension-slider">
+            </div>
+            <div class="colour-slider-container">
+                <p id="colour-label">Colour: </p>
+                <input type="color" id="colour-picker">
+            </div>
         </div>
         <div id="grid-container"></div>
     </div>
