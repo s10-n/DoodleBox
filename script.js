@@ -9,3 +9,13 @@ for (let i = 0; i < NUMBER_OF_SQUARES; i++) {
     gridSquare.classList.add("grid-square");
     gridContainer.appendChild(gridSquare);
 }
+
+// create a node list for each grid item
+const gridSquares = document.querySelectorAll(".grid-square")
+
+// when the mouse hovers over a div, change the background color
+gridSquares.forEach((gridSquare) => {
+    gridSquare.addEventListener('mouseover', () => {
+        gridSquare.style.backgroundColor = 'black';
+    })
+})
