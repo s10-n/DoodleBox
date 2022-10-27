@@ -50,26 +50,24 @@ makeGridInteractive();
 
 // Changing the canvas size
 
-// create a DOM object for the button that changes
-const changeDimensionsButton = document.getElementById("change-dimensions-button");
+// create a DOM object for the slider
+let slider = document.getElementById("grid-dimension-slider");
+let sliderLabel = document.getElementById("slider-label");
 
-// when the button is clicked, prompt the user to resize the canvas
-changeDimensionsButton.addEventListener('click', (event) => {
-    let newCanvasSize = prompt("Enter a new canvas size:");
+// set a default value for the slider label
+sliderLabel.innerHTML = slider.value;
+
+// the user can drag the slider to set a new canvas size.
+// when the user is done changing the slider value:
+slider.onchange = function() {
+    // the slider label is updated
+    sliderLabel.innerHTML = this.value;
+    // all existing grid squares are deleted
     while (gridContainer.firstChild) {
         gridContainer.removeChild(gridContainer.firstChild);
     };
-    renderGrid(newCanvasSize);
-    makeGridInteractive();
-});
-
-
-/* let slider = document.getElementById("grid-dimension-slider");
-let sliderLabel = document.getElementById("slider-label");
-sliderLabel.innerHTML = slider.value;
-
-slider.oninput = function() {
-    sliderLabel.innerHTML = this.value;
+    // the grid is rendered again using the new value
     renderGrid(this.value);
-} */
-
+    // the grid is made interactive
+    makeGridInteractive();
+}
