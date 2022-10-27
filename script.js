@@ -26,18 +26,27 @@ function renderGrid(gridDimension) {
 
 renderGrid(initialGridDimension);
 
-// once the grid is created, it's time to make it interactive.
-// create a node list containing each grid item
-const gridSquares = document.querySelectorAll(".grid-square")
+// declare the function that makes the grid interactive.
+// this function creates a node list containing each grid square,
+// then adds an event listener to each square
 
-// when the mouse hovers over a div while left button is pressed, change the background color
-gridSquares.forEach((gridSquare) => {
-    gridSquare.addEventListener('mouseover', (event) => {
-        if (event.buttons === 1 || event.buttons === 3) {
-            gridSquare.style.backgroundColor = 'black';
-        }
+function makeGridInteractive() {
+    // create a node list containing each grid item
+    let gridSquares = document.querySelectorAll(".grid-square")
+
+    // when the mouse hovers over a div while left button is pressed, change the background color
+    gridSquares.forEach((gridSquare) => {
+        gridSquare.addEventListener('mouseover', (event) => {
+            if (event.buttons === 1 || event.buttons === 3) {
+                gridSquare.style.backgroundColor = 'black';
+            }
+        })
     })
-})
+};
+
+// when the page is initially loaded, make the grid interactive
+
+makeGridInteractive();
 
 // Changing the canvas size
 
@@ -51,6 +60,7 @@ changeDimensionsButton.addEventListener('click', (event) => {
         gridContainer.removeChild(gridContainer.firstChild);
     };
     renderGrid(newCanvasSize);
+    makeGridInteractive();
 });
 
 
